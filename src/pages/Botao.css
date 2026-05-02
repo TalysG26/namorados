@@ -1,3 +1,50 @@
-body{
-    background-color: pink; 
+
+
+
+body {
+  background: radial-gradient(circle at top, #1e3a8a, #0b0f1a 70%);
+  color: var(--text-primary);
+}
+
+.stars {
+  background: transparent;
+  box-shadow:
+    20px 30px #facc15,
+    100px 200px #fde68a,
+    300px 150px #facc15,
+    500px 400px #fde68a,
+    700px 100px #facc15;
+}
+
+
+.stars::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+
+  /* várias estrelas */
+  box-shadow:
+    50px 0px white,
+    100px 100px white,
+    200px 50px white,
+    300px 150px white,
+    400px 80px white,
+    500px 200px white,
+    600px 120px white,
+    700px 60px white,
+    800px 180px white,
+    900px 40px white;
+
+  animation: fall 100s linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 }

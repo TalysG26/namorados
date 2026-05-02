@@ -1,20 +1,18 @@
-    import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ButtonStart.css';
 
 function ButonStart() {
     const navigate = useNavigate();
 
     function irParaOutraPagina() {
-        navigate('/Botao/Carta');   
+        navigate('Botao/oGordinhoDaGalera');
     }
 
     return (
         <div className='paiButton'>
-            <div className='button'>
-                <button className='buttonStart' onClick={irParaOutraPagina}>
-                    Start
-                </button>
-            </div>
+            <button className='buttonStart' onClick={irParaOutraPagina}>
+                 Começar nossa história 💌
+            </button>
         </div>
     );
 }

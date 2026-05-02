@@ -1,0 +1,58 @@
+/* Fundo geral */
+.videos-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Título */
+.titulo {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container dos vídeos */
+.videos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card do vídeo */
+.video-card {
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover bonito */
+.video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Vídeo responsivo */
+.video-card iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  border: none;
+}
+
+/* Responsivo mobile */
+@media (max-width: 600px) {
+  .titulo {
+    font-size: 1.8rem;
+  }
+
+  .video-card iframe {
+    height: 180px;
+  }
+}

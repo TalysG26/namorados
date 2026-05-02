@@ -5,6 +5,7 @@ function Botao() {
 return (
 <div >
     <ButtonStart/>  
+    <div class="stars"></div>
 </div>
 )
 }
