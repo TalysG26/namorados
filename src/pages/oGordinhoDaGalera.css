@@ -105,3 +105,13 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@media (max-width: 600px) {
+  .videos-container {
+    grid-template-columns: 1fr; /* 1 por linha */
+  }
+
+  .video-card video {
+    height: auto; /* evita corte estranho */
+  }
+}
