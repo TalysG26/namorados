@@ -1,5 +1,11 @@
 import './oGordinhoDaGalera.css';
 import { useNavigate } from 'react-router-dom'; 
+import Video1 from '../imgs/videosSouthPark/Video1.mp4';
+import Video2 from '../imgs/videosSouthPark/Video2.mp4';
+import Video3 from '../imgs/videosSouthPark/Video3.mp4';
+import Video4 from '../imgs/videosSouthPark/Video4.mp4';
+import Video5 from '../imgs/videosSouthPark/Video5.mp4';
+import Video6 from '../imgs/videosSouthPark/Video6.mp4';
 
 function Videos() {
     const navigate = useNavigate();
@@ -17,19 +23,39 @@ function Videos() {
       <div className="videos-container">
 
         <div className="video-card">
-          <iframe src="https://www.youtube.com/embed/oiER4LfZ1wQ" title="video1" allowFullScreen></iframe>
+          <video controls>
+            <source src={Video1} type="video/mp4" />
+          </video>
         </div>
 
         <div className="video-card">
-          <iframe src="https://www.youtube.com/embed/Yyoyf7VACAA" title="video2" allowFullScreen></iframe>
+          <video controls>
+            <source src={Video2} type="video/mp4" />
+          </video>
         </div>
 
         <div className="video-card">
-          <iframe src="https://www.youtube.com/embed/5nbWcctJHck" title="video3" allowFullScreen></iframe>
+          <video controls>
+            <source src={Video3} type="video/mp4" />
+          </video>
         </div>
 
         <div className="video-card">
-          <iframe src="https://www.youtube.com/embed/Zk6sMGryJZE" title="video4" allowFullScreen></iframe>
+          <video controls>
+            <source src={Video4} type="video/mp4" />
+          </video>
+        </div>
+
+         <div className="video-card">
+          <video controls>
+            <source src={Video5} type="video/mp4" />
+          </video>
+        </div>
+
+         <div className="video-card">
+          <video controls>
+            <source src={Video6} type="video/mp4" />
+          </video>
         </div>
 
       </div>
