@@ -1,15 +1,25 @@
+/* RESET básico (evita bugs de espaçamento) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Fundo geral */
 .videos-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
   padding: 40px 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Título */
 .titulo {
   color: white;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); /* responsivo automático */
   margin-bottom: 30px;
   font-family: 'Poppins', sans-serif;
 }
@@ -17,41 +27,81 @@
 /* Container dos vídeos */
 .videos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
 }
+
+/* Card */
 .video-card {
   background: white;
   border-radius: 20px;
   padding: 10px;
-  overflow: hidden; /* MUITO IMPORTANTE */
+  overflow: hidden; /* impede o vídeo de sair */
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover bonito */
-.video-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+/* Hover (só funciona bem em PC) */
+@media (hover: hover) {
+  .video-card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  }
 }
 
-/* Vídeo responsivo */
+/* Vídeo */
 .video-card video {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16/9; /* padrão bonito */
   border-radius: 15px;
-  border: none;
+  object-fit: cover;
+  display: block;
 }
 
-/* Responsivo mobile */
+/* Botão */
+.button-next {
+  margin-top: 40px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4d6d;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover botão */
+.button-next:hover {
+  background: #ffe5ec;
+}
+
+/* 📱 MOBILE */
 @media (max-width: 600px) {
-  .titulo {
-    font-size: 1.8rem;
+  .videos-page {
+    padding: 30px 15px;
   }
 
-  .video-card iframe {
-    height: 180px;
+  .videos-container {
+    gap: 15px;
+  }
+
+  .video-card {
+    border-radius: 15px;
+    padding: 8px;
+  }
+
+  .button-next {
+    width: 100%;
+  }
+}
+
+/* 💻 TELAS GRANDES */
+@media (min-width: 1200px) {
+  .videos-container {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
