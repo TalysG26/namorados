@@ -1,17 +1,17 @@
 import './oGordinhoDaGalera.css';
 import { useNavigate } from 'react-router-dom'; 
-import Video1 from '../imgs/videosSouthPark/Video1.mp4';
-import Video2 from '../imgs/videosSouthPark/Video2.mp4';
-import Video3 from '../imgs/videosSouthPark/Video3.mp4';
-import Video4 from '../imgs/videosSouthPark/Video4.mp4';
-import Video5 from '../imgs/videosSouthPark/Video5.mp4';
-import Video6 from '../imgs/videosSouthPark/Video6.mp4';
+import Video1 from '../videosSouthPark/Video1.mp4';
+import Video2 from '../videosSouthPark/Video2.mp4';
+import Video3 from '../videosSouthPark/Video3.mp4';
+import Video4 from '../videosSouthPark/Video4.mp4';
+import Video5 from '../videosSouthPark/Video5.mp4';
+import Video6 from '../videosSouthPark/Video6.mp4';
 
 function Videos() {
     const navigate = useNavigate();
 
     function irParaOutraPagina() {
-        navigate('/oGordinhoDaGalera/Home');
+        navigate('/home');
     }
   return (
 

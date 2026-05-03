@@ -5,7 +5,7 @@ function ButonStart() {
     const navigate = useNavigate();
 
     function irParaOutraPagina() {
-        navigate('Botao/oGordinhoDaGalera');
+        navigate('/videos');
     }
 
     return (
