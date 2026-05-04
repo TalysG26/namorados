@@ -7,11 +7,11 @@ function importarMidias(r) {
 }
 
 const imagens = importarMidias(
-  require.context('../assets/album', true, /\.(png|jpe?g)$/)
+  require.context('../imgs/', true, /\.(png|jpe?g)$/)
 );
 
 const videos = importarMidias(
-  require.context('../assets/album', true, /\.(mp4)$/)
+  require.context('../imgs/', true, /\.(mp4)$/)
 );
 // 🔥 organiza
 const album = {};
