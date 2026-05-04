@@ -1,26 +1,27 @@
 import { useState } from 'react';
 import './Album.css';
 
-// 🔥 importar arquivos (CRA)
+// 🔥 função pra importar
 function importarMidias(r) {
   return r.keys().map(r);
 }
 
-const imagens = importarMidias(
-  require.context('../imgs/', true, /\.(png|jpe?g)$/)
+// 🔥 pega tudo de uma vez (SEM quebrar build)
+const arquivos = importarMidias(
+  require.context('../imgs', true, /\.(png|jpe?g|mp4)$/)
 );
 
-const videos = importarMidias(
-  require.context('../imgs/', true, /\.(mp4)$/)
-);
-// 🔥 organiza
+// 🔥 organiza por pasta (2024, 2025...)
 const album = {};
 
-[...imagens, ...videos].forEach((file) => {
+arquivos.forEach((file) => {
   const path = file;
 
   const partes = path.split('/');
-  const pasta = partes[partes.length - 2];
+  const pastaOriginal = partes[partes.length - 2];
+
+  // pega só número (ex: img2024 → 2024)
+  const pasta = pastaOriginal.replace(/[^\d]/g, '');
 
   if (!album[pasta]) {
     album[pasta] = [];
@@ -35,49 +36,34 @@ const album = {};
   });
 });
 
-// 🔥 pega nomes das pastas
-const pastas = Object.keys(album);
-
 function Album() {
   const [filtro, setFiltro] = useState('todos');
-  const [tipoFiltro, setTipoFiltro] = useState('todos');
+  const pastas = Object.keys(album);
 
   return (
     <div className="album">
 
-   
-
-      {/* 🔥 FILTRO POR TIPO */}
+      {/* 🔥 FILTROS */}
       <div className="filtros">
-        <button onClick={() => setTipoFiltro('todos')}>Tudo</button>
-        <button onClick={() => setTipoFiltro('img')}>Fotos</button>
-        <button onClick={() => setTipoFiltro('video')}>Vídeos</button>
-        <button onClick={() => setTipoFiltro('video')}>Vídeos 2024</button>
-        <button onClick={() => setTipoFiltro('video')}>Vídeos 2025</button>
-        <button onClick={() => setTipoFiltro('video')}>Vídeos 2026</button>
-        <button onClick={() => setTipoFiltro('video')}>Fotos 2024</button>
-        <button onClick={() => setTipoFiltro('video')}>Fotos 2025</button>
-        <button onClick={() => setTipoFiltro('video')}>Fotos 2026</button>
-        
+        <button onClick={() => setFiltro('todos')}>Todos</button>
+
+        {pastas.map((pasta) => (
+          <button key={pasta} onClick={() => setFiltro(pasta)}>
+            {pasta}
+          </button>
+        ))}
       </div>
 
       {/* 🔥 GALERIA */}
       {Object.entries(album).map(([pasta, midias]) => {
         if (filtro !== 'todos' && filtro !== pasta) return null;
 
-        const filtradas = midias.filter((item) => {
-          if (tipoFiltro === 'todos') return true;
-          return item.tipo === tipoFiltro;
-        });
-
-        if (filtradas.length === 0) return null;
-
         return (
           <div key={pasta} className="secao">
             <h2>{pasta}</h2>
 
             <div className="galeria">
-              {filtradas.map((item, i) => (
+              {midias.map((item, i) => (
                 <div className="card" key={i}>
                   {item.tipo === 'img' ? (
                     <img src={item.src} alt="" />
