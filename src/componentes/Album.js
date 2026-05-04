@@ -6,18 +6,13 @@ function importarMidias(r) {
   return r.keys().map(r);
 }
 
-const imagens = [
-  ...importarMidias(require.context('../imgs/img2024', true, /\.(png|jpe?g)$/)),
-  ...importarMidias(require.context('../imgs/img2025', true, /\.(png|jpe?g)$/)),
-  ...importarMidias(require.context('../imgs/img2026', true, /\.(png|jpe?g)$/)),
-];
+const imagens = importarMidias(
+  require.context('../assets/album', true, /\.(png|jpe?g)$/)
+);
 
-const videos = [
-  ...importarMidias(require.context('../imgs/videos2024', true, /\.(mp4)$/)),
-  ...importarMidias(require.context('../imgs/videos2025', true, /\.(mp4)$/)),
-  ...importarMidias(require.context('../imgs/videos2026', true, /\.(mp4)$/)),
-];
-
+const videos = importarMidias(
+  require.context('../assets/album', true, /\.(mp4)$/)
+);
 // 🔥 organiza
 const album = {};
 
