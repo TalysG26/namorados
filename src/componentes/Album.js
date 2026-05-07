@@ -61,7 +61,11 @@ function Album() {
           Vídeos
         </button>
 
-       
+        {pastas.map((pasta) => (
+          <button key={pasta} onClick={() => setFiltro(pasta)}>
+            {pasta}
+          </button>
+        ))}
       </div>
 
       {/* GALERIA */}
